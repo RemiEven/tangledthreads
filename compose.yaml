@@ -1,0 +1,28 @@
+services:
+  base:
+    image: mcr.microsoft.com/devcontainers/base:debian
+    volumes:
+      # Mounts the project folder to '/workspace'. While this file is in .devcontainer,
+      # mounts are relative to the first file in the list, which is a level up.
+      - .:/workspace:cached
+
+    # Overrides default command so things don't shut down after the process ends.
+    command: /bin/sh -c "while sleep 1000; do :; done"
+  random:
+    build: ./sortasaservice
+    environment:
+      - SORT_TYPE=random
+    ports:
+      - "7040:7040"
+  bubble:
+    build: ./sortasaservice
+    environment:
+      - SORT_TYPE=bubble
+    ports:
+      - "7041:7040"
+  quick:
+    build: ./sortasaservice
+    environment:
+      - SORT_TYPE=quick
+    ports:
+      - "7042:7040"

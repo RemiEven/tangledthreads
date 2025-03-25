@@ -1,13 +1,10 @@
 {
-	"name": "Go",
-	"image": "mcr.microsoft.com/devcontainers/base:debian",
+	"name": "Debian",
+	"dockerComposeFile": ["../compose.yaml"],
+	"service": "base",
+	"workspaceFolder": "/workspace",
+	"shutdownAction": "stopCompose",
 	"features": {
-		"ghcr.io/devcontainers/features/docker-in-docker:2": {
-			"moby": true,
-			"azureDnsAutoDetection": true,
-			"version": "latest",
-			"dockerDashComposeVersion": "none"
-		},
 		"ghcr.io/devcontainers/features/go:1": {}
 	},
 	"customizations": {
